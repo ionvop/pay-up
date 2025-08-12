@@ -1,4 +1,5 @@
-# README
+# pay-up
+A simple payment tracking app
 
 ## Project Title: People Who Need to Pay Up
 
