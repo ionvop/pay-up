@@ -1,0 +1,479 @@
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="manifest" href="manifest.json">
+        <style>
+            body {
+                margin: 0rem;
+                padding: 0rem;
+                background-color: #111;
+                color: #fff;
+                font-family: Arial, Helvetica, sans-serif;
+            }
+
+            button {
+                padding: 1rem;
+                border: none;
+                border-radius: 1rem;
+                background-color: #55a;
+                color: #fff;
+                font-family: Arial, Helvetica, sans-serif;
+                font-size: 1rem;
+            }
+
+            input {
+                padding: 1rem;
+                border: none;
+                border-radius: 1rem;
+                font-family: Arial, Helvetica, sans-serif;
+                font-size: 1rem;
+                width: 100%;
+            }
+
+            svg {
+                width: 1rem;
+                height: 1rem;
+            }
+
+            select {
+                padding: 1rem;
+                border: none;
+                border-radius: 1rem;
+                font-family: Arial, Helvetica, sans-serif;
+                font-size: 1rem;
+                width: 100%;
+            }
+        </style>
+    </head>
+    <body>
+        <div style="
+            display: none;
+            height: 100%;
+            overflow: hidden;"
+            id="pageApp">
+            <div style="
+                display: grid;
+                grid-template-rows: max-content 1fr;
+                height: 100%;">
+                <div style="
+                    padding: 1rem;
+                    font-size: 1.5rem;
+                    font-weight: bold;
+                    background-color: #55a;">
+                    people who need to pay up
+                </div>
+                <div style="
+                    padding: 1rem;
+                    overflow: hidden;">
+                    <div style="
+                        display: grid;
+                        grid-template-rows: repeat(2, max-content) 1fr;
+                        height: 100%;
+                        background-color: #222;
+                        border-radius: 1rem;
+                        overflow: hidden;">
+                        <div style="
+                            display: grid;
+                            grid-template-columns: 1fr repeat(2, max-content);">
+                            <div style="
+                                padding: 1rem;">
+                                <select id="app_selectMonth"
+                                    onchange="app_selectMonth_change(this)">
+                                    <option value="jan">
+                                        January
+                                    </option>
+                                    <option value="feb">
+                                        February
+                                    </option>
+                                    <option value="mar">
+                                        March
+                                    </option>
+                                    <option value="apr">
+                                        April
+                                    </option>
+                                    <option value="may">
+                                        May
+                                    </option>
+                                    <option value="jun">
+                                        June
+                                    </option>
+                                    <option value="jul">
+                                        July
+                                    </option>
+                                    <option value="aug">
+                                        August
+                                    </option>
+                                    <option value="sep">
+                                        September
+                                    </option>
+                                    <option value="oct">
+                                        October
+                                    </option>
+                                    <option value="nov">
+                                        November
+                                    </option>
+                                    <option value="dec">
+                                        December
+                                    </option>
+                                </select>
+                            </div>
+                            <div style="
+                                padding: 1rem;
+                                padding-left: 0rem;">
+                                <button onclick="app_btnImport_click()">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor"><path d="M240-160q-33 0-56.5-23.5T160-240v-80q0-17 11.5-28.5T200-360q17 0 28.5 11.5T240-320v80h480v-80q0-17 11.5-28.5T760-360q17 0 28.5 11.5T800-320v80q0 33-23.5 56.5T720-160H240Zm200-486-75 75q-12 12-28.5 11.5T308-572q-11-12-11.5-28t11.5-28l144-144q6-6 13-8.5t15-2.5q8 0 15 2.5t13 8.5l144 144q12 12 11.5 28T652-572q-12 12-28.5 12.5T595-571l-75-75v286q0 17-11.5 28.5T480-320q-17 0-28.5-11.5T440-360v-286Z"/></svg>
+                                </button>
+                            </div>
+                            <div style="
+                                padding: 1rem;
+                                padding-left: 0rem;">
+                                <button onclick="app_btnExport_click()">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor"><path d="M480-337q-8 0-15-2.5t-13-8.5L308-492q-12-12-11.5-28t11.5-28q12-12 28.5-12.5T365-549l75 75v-286q0-17 11.5-28.5T480-800q17 0 28.5 11.5T520-760v286l75-75q12-12 28.5-11.5T652-548q11 12 11.5 28T652-492L508-348q-6 6-13 8.5t-15 2.5ZM240-160q-33 0-56.5-23.5T160-240v-80q0-17 11.5-28.5T200-360q17 0 28.5 11.5T240-320v80h480v-80q0-17 11.5-28.5T760-360q17 0 28.5 11.5T800-320v80q0 33-23.5 56.5T720-160H240Z"/></svg>
+                                </button>
+                            </div>
+                        </div>
+                        <div style="
+                            display: grid;
+                            grid-template-columns: 1fr max-content;">
+                            <div style="
+                                padding: 1rem;">
+                                <input id="app_inputPerson"
+                                    placeholder="New person">
+                            </div>
+                            <div style="
+                                padding: 1rem;
+                                padding-left: 0rem;">
+                                <button onclick="app_btnAddPerson_click()">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor"><path d="M720-520h-80q-17 0-28.5-11.5T600-560q0-17 11.5-28.5T640-600h80v-80q0-17 11.5-28.5T760-720q17 0 28.5 11.5T800-680v80h80q17 0 28.5 11.5T920-560q0 17-11.5 28.5T880-520h-80v80q0 17-11.5 28.5T760-400q-17 0-28.5-11.5T720-440v-80Zm-360 40q-66 0-113-47t-47-113q0-66 47-113t113-47q66 0 113 47t47 113q0 66-47 113t-113 47ZM40-240v-32q0-34 17.5-62.5T104-378q62-31 126-46.5T360-440q66 0 130 15.5T616-378q29 15 46.5 43.5T680-272v32q0 33-23.5 56.5T600-160H120q-33 0-56.5-23.5T40-240Z"/></svg>
+                                </button>
+                            </div>
+                        </div>
+                        <div style="
+                            padding: 1rem;
+                            overflow: hidden;">
+                            <div style="
+                                height: 100%;
+                                background-color: #111;
+                                border-radius: 1rem;
+                                overflow: auto;"
+                                id="app_panelPeople">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script>
+            if ("serviceWorker" in navigator) navigator.serviceWorker.register("service-worker.js");
+            let pageApp = document.getElementById("pageApp");
+            let app_selectMonth = document.getElementById("app_selectMonth");
+            let app_inputPerson = document.getElementById("app_inputPerson");
+            let app_panelPeople = document.getElementById("app_panelPeople");
+            let data = loadData();
+            openPage("app");
+
+            function loadData() {
+                let data = JSON.parse(localStorage.getItem("20250812_data"));
+                if (data == null) data = {};
+                if (data.selectedMonth == null) data.selectedMonth = "jan";
+
+                if (data.months == null) data.months = {
+                    jan: [],
+                    feb: [],
+                    mar: [],
+                    apr: [],
+                    may: [],
+                    jun: [],
+                    jul: [],
+                    aug: [],
+                    sep: [],
+                    oct: [],
+                    nov: [],
+                    dec: []
+                };
+
+                for (let month in data.months) {
+                    for (let person of data.months[month]) {
+                        if (person.name == null) person.name = "";
+                        if (person.bills == null) person.bills = [];
+
+                        for (let bill of person.bills) {
+                            if (bill.name == null) bill.name = "";
+                            if (bill.amount == null) bill.amount = 0;
+                            if (bill.paid == null) bill.paid = 0;
+                        }
+                    }
+                }
+
+                return data;
+            }
+
+            function elementFromHTML(html) {
+                let template = document.createElement("template");
+                template.innerHTML = html;
+                return template.content.firstElementChild;
+            }
+
+            function escapeHtml(unsafe) {
+                return unsafe
+                    .replace(/&/g, "&amp;")
+                    .replace(/</g, "&lt;")
+                    .replace(/>/g, "&gt;")
+                    .replace(/"/g, "&quot;")
+                    .replace(/'/g, "&#039;");
+            }
+
+            function getDateString(date) {
+                let month = (date.getMonth() + 1).toString().padStart(2, "0");
+                let day = date.getDate().toString().padStart(2, "0");
+                let hour = date.getHours().toString().padStart(2, "0");
+                let minute = date.getMinutes().toString().padStart(2, "0");
+                let second = date.getSeconds().toString().padStart(2, "0");
+                return `${date.getFullYear()}-${month}-${day} ${hour}-${minute}-${second}`;
+            }
+
+            function openPage(page) {
+                pageApp.style.display = "none";
+
+                switch (page) {
+                    case "app": {
+                        pageApp.style.display = "block";
+                        app_panelPeople.innerHTML = "";
+
+                        app_selectMonth.value = data.selectedMonth;
+
+                        for (let person of data.months[data.selectedMonth]) {
+                            let totalAmount = 0;
+                            let totalPaid = 0;
+
+                            for (let bill of person.bills) {
+                                totalAmount += Number(bill.amount);
+                                totalPaid += Number(bill.paid);
+                            }
+
+                            let statusStyle = (totalPaid >= totalAmount) ? "color: #0f0;" : (totalPaid <= 0) ? "color: #f00;" : "";
+                            let totalText = `Total: ${totalPaid} / ${totalAmount}`;
+                            if (totalPaid != totalAmount) totalText += ` (${totalPaid > totalAmount ? "+" : ""}${totalPaid - totalAmount})`;
+
+                            let personElement = elementFromHTML(/*html*/`
+                                <div style="
+                                    border-bottom: 1px solid #fff;">
+                                    <div style="
+                                        display: grid;
+                                        grid-template-columns: 1fr repeat(2, max-content)">
+                                        <div style="
+                                            padding: 1rem;
+                                            font-weight: bold;">
+                                            ${escapeHtml(person.name)}
+                                        </div>
+                                        <div style="
+                                            padding: 1rem;
+                                            padding-left: 0rem;
+                                            ${statusStyle}">
+                                            ${totalText}
+                                        </div>
+                                        <div style="
+                                            padding: 1rem;
+                                            padding-left: 0rem;"
+                                            onclick="app_btnDeletePerson_click(this)"
+                                            data-name="${escapeHtml(person.name)}">
+                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor"><path d="M280-120q-33 0-56.5-23.5T200-200v-520q-17 0-28.5-11.5T160-760q0-17 11.5-28.5T200-800h160q0-17 11.5-28.5T400-840h160q17 0 28.5 11.5T600-800h160q17 0 28.5 11.5T800-760q0 17-11.5 28.5T760-720v520q0 33-23.5 56.5T680-120H280Zm120-160q17 0 28.5-11.5T440-320v-280q0-17-11.5-28.5T400-640q-17 0-28.5 11.5T360-600v280q0 17 11.5 28.5T400-280Zm160 0q17 0 28.5-11.5T600-320v-280q0-17-11.5-28.5T560-640q-17 0-28.5 11.5T520-600v280q0 17 11.5 28.5T560-280Z"/></svg>
+                                        </div>
+                                    </div>
+                                    <div class="bills">
+                                    
+                                    </div>
+                                    <div style="
+                                        display: grid;
+                                        grid-template-columns: 1fr max-content;">
+                                        <div style="
+                                            padding: 1rem;">
+                                            <input class="paymentType"
+                                                placeholder="New payment type">
+                                        </div>
+                                        <div style="
+                                            padding: 1rem;
+                                            padding-left: 0rem;">
+                                            <button onclick="app_btnAddBill_click(this)"
+                                                data-person="${escapeHtml(person.name)}">
+                                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor"><path d="M440-440H240q-17 0-28.5-11.5T200-480q0-17 11.5-28.5T240-520h200v-200q0-17 11.5-28.5T480-760q17 0 28.5 11.5T520-720v200h200q17 0 28.5 11.5T760-480q0 17-11.5 28.5T720-440H520v200q0 17-11.5 28.5T480-200q-17 0-28.5-11.5T440-240v-200Z"/></svg>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            `);
+
+                            for (let bill of person.bills) {
+                                let billElement = elementFromHTML(/*html*/`
+                                    <div style="
+                                        display: grid;
+                                        grid-template-columns: 2fr 1fr max-content 1fr max-content;">
+                                        <div style="
+                                            padding: 1rem;
+                                            padding-right: 0rem;">
+                                            ${escapeHtml(bill.name)}
+                                        </div>
+                                        <div style="
+                                            padding: 1rem;
+                                            padding-left: 0rem;
+                                            padding-right: 0rem;">
+                                            <input style="
+                                                padding: 0rem;
+                                                text-align: center;
+                                                background-color: transparent;
+                                                color: #fff;
+                                                border-radius: 0rem;
+                                                border-bottom: 1px solid #fff;"
+                                                type="number"
+                                                value="${bill.paid}"
+                                                onchange="app_inputBillPaid_change(this)"
+                                                data-bill="${escapeHtml(bill.name)}"
+                                                data-person="${escapeHtml(person.name)}">
+                                        </div>
+                                        <div style="
+                                            padding: 1rem;
+                                            padding-left: 0rem;
+                                            padding-right: 0rem;">
+                                            /
+                                        </div>
+                                        <div style="
+                                            padding: 1rem;
+                                            padding-left: 0rem;
+                                            padding-right: 0rem;">
+                                            <input style="
+                                                padding: 0rem;
+                                                text-align: center;
+                                                background-color: transparent;
+                                                color: #fff;
+                                                border-radius: 0rem;
+                                                border-bottom: 1px solid #fff;"
+                                                type="number"
+                                                value="${bill.amount}"
+                                                onchange="app_inputBillAmount_change(this)"
+                                                data-bill="${escapeHtml(bill.name)}"
+                                                data-person="${escapeHtml(person.name)}">
+                                        </div>
+                                        <div style="
+                                            padding: 1rem;"
+                                            onclick="app_btnDeleteBill_click(this)"
+                                            data-bill="${escapeHtml(bill.name)}"
+                                            data-person="${escapeHtml(person.name)}">
+                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor"><path d="M240-440q-17 0-28.5-11.5T200-480q0-17 11.5-28.5T240-520h480q17 0 28.5 11.5T760-480q0 17-11.5 28.5T720-440H240Z"/></svg>
+                                        </div>
+                                    </div>
+                                `);
+
+                                personElement.querySelector(".bills").appendChild(billElement);
+                            }
+
+                            app_panelPeople.appendChild(personElement);
+                        }
+                    } break;
+                }
+            }
+
+            function app_btnImport_click() {
+                if (confirm("Are you sure you want to import data? This will overwrite your current data.") == false) return;
+                let input = document.createElement("input");
+                input.type = "file";
+                input.accept = ".json";
+
+                input.onchange = () => {
+                    let file = input.files[0];
+                    let reader = new FileReader();
+
+                    reader.onload = () => {
+                        data = JSON.parse(reader.result);
+                        localStorage.setItem("20250812_data", JSON.stringify(data));
+                        openPage("app");
+                    }
+
+                    reader.readAsText(file);
+                }
+
+                input.click();
+            }
+
+            function app_btnExport_click() {
+                let blob = new Blob([JSON.stringify(data)], { type: "application/json" });
+                let url = URL.createObjectURL(blob);
+                let a = document.createElement("a");
+                a.href = url;
+                let filename = getDateString(new Date());
+                filename = prompt("Enter filename", filename);
+                if (filename == null) return;
+                a.download = `${filename}.json`;
+                a.click();
+                URL.revokeObjectURL(url);
+            }
+
+            function app_selectMonth_change(element) {
+                data.selectedMonth = element.value;
+                localStorage.setItem("20250812_data", JSON.stringify(data));
+                openPage("app");
+            }
+
+            function app_btnAddPerson_click() {
+                let person = {
+                    name: app_inputPerson.value,
+                    bills: []
+                };
+
+                app_inputPerson.value = "";
+                data.months[data.selectedMonth].push(person);
+                localStorage.setItem("20250812_data", JSON.stringify(data));
+                openPage("app");
+            }
+
+            function app_btnDeletePerson_click(element) {
+                if (confirm("Are you sure you want to delete this person?") == false) return;
+                let person = data.months[data.selectedMonth].find(person => person.name == element.dataset.name);
+                let index = data.months[data.selectedMonth].indexOf(person);
+                data.months[data.selectedMonth].splice(index, 1);
+                localStorage.setItem("20250812_data", JSON.stringify(data));
+                openPage("app");
+            }
+
+            function app_btnAddBill_click(element) {
+                let person = data.months[data.selectedMonth].find(person => person.name == element.dataset.person);
+                let name = element.parentElement.parentElement.querySelector(".paymentType").value;
+
+                person.bills.push({
+                    name: name,
+                    paid: 0,
+                    amount: 100
+                });
+
+                localStorage.setItem("20250812_data", JSON.stringify(data));
+                openPage("app");
+            }
+
+            function app_inputBillPaid_change(element) {
+                let person = data.months[data.selectedMonth].find(person => person.name == element.dataset.person);
+                let bill = person.bills.find(bill => bill.name == element.dataset.bill);
+                bill.paid = element.value;
+                localStorage.setItem("20250812_data", JSON.stringify(data));
+                openPage("app");
+            }
+
+            function app_inputBillAmount_change(element) {
+                let person = data.months[data.selectedMonth].find(person => person.name == element.dataset.person);
+                let bill = person.bills.find(bill => bill.name == element.dataset.bill);
+                bill.amount = element.value;
+                localStorage.setItem("20250812_data", JSON.stringify(data));
+                openPage("app");
+            }
+
+            function app_btnDeleteBill_click(element) {
+                if (confirm("Are you sure you want to delete this bill?") == false) return;
+                let person = data.months[data.selectedMonth].find(person => person.name == element.dataset.person);
+                let bill = person.bills.find(bill => bill.name == element.dataset.bill);
+                let index = person.bills.indexOf(bill);
+                person.bills.splice(index, 1);
+                localStorage.setItem("20250812_data", JSON.stringify(data));
+                openPage("app");
+            }
+        </script>
+    </body>
+</html>
