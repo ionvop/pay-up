@@ -56,109 +56,114 @@
                 grid-template-rows: max-content 1fr;
                 height: 100%;">
                 <div style="
-                    padding: 1rem;
-                    font-size: 1.5rem;
-                    font-weight: bold;
                     background-color: #55a;">
-                    people who need to pay up
+                    <div style="
+                        padding: 1rem;
+                        padding-bottom: 0rem;
+                        font-size: 1.5rem;
+                        font-weight: bold;">
+                        people who need to pay up
+                    </div>
+                    <div style="
+                        padding: 1rem;
+                        padding-top: 0rem;
+                        font-size: 0.7rem;
+                        color: #aaa;">
+                        v0.1.0 by ionvop
+                    </div>
                 </div>
                 <div style="
-                    padding: 1rem;
+                    display: grid;
+                    grid-template-rows: repeat(2, max-content) 1fr;
+                    height: 100%;
+                    background-color: #222;
                     overflow: hidden;">
                     <div style="
                         display: grid;
-                        grid-template-rows: repeat(2, max-content) 1fr;
-                        height: 100%;
-                        background-color: #222;
-                        border-radius: 1rem;
-                        overflow: hidden;">
+                        grid-template-columns: 1fr repeat(2, max-content);">
                         <div style="
-                            display: grid;
-                            grid-template-columns: 1fr repeat(2, max-content);">
-                            <div style="
-                                padding: 1rem;">
-                                <select id="app_selectMonth"
-                                    onchange="app_selectMonth_change(this)">
-                                    <option value="jan">
-                                        January
-                                    </option>
-                                    <option value="feb">
-                                        February
-                                    </option>
-                                    <option value="mar">
-                                        March
-                                    </option>
-                                    <option value="apr">
-                                        April
-                                    </option>
-                                    <option value="may">
-                                        May
-                                    </option>
-                                    <option value="jun">
-                                        June
-                                    </option>
-                                    <option value="jul">
-                                        July
-                                    </option>
-                                    <option value="aug">
-                                        August
-                                    </option>
-                                    <option value="sep">
-                                        September
-                                    </option>
-                                    <option value="oct">
-                                        October
-                                    </option>
-                                    <option value="nov">
-                                        November
-                                    </option>
-                                    <option value="dec">
-                                        December
-                                    </option>
-                                </select>
-                            </div>
-                            <div style="
-                                padding: 1rem;
-                                padding-left: 0rem;">
-                                <button onclick="app_btnImport_click()">
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor"><path d="M240-160q-33 0-56.5-23.5T160-240v-80q0-17 11.5-28.5T200-360q17 0 28.5 11.5T240-320v80h480v-80q0-17 11.5-28.5T760-360q17 0 28.5 11.5T800-320v80q0 33-23.5 56.5T720-160H240Zm200-486-75 75q-12 12-28.5 11.5T308-572q-11-12-11.5-28t11.5-28l144-144q6-6 13-8.5t15-2.5q8 0 15 2.5t13 8.5l144 144q12 12 11.5 28T652-572q-12 12-28.5 12.5T595-571l-75-75v286q0 17-11.5 28.5T480-320q-17 0-28.5-11.5T440-360v-286Z"/></svg>
-                                </button>
-                            </div>
-                            <div style="
-                                padding: 1rem;
-                                padding-left: 0rem;">
-                                <button onclick="app_btnExport_click()">
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor"><path d="M480-337q-8 0-15-2.5t-13-8.5L308-492q-12-12-11.5-28t11.5-28q12-12 28.5-12.5T365-549l75 75v-286q0-17 11.5-28.5T480-800q17 0 28.5 11.5T520-760v286l75-75q12-12 28.5-11.5T652-548q11 12 11.5 28T652-492L508-348q-6 6-13 8.5t-15 2.5ZM240-160q-33 0-56.5-23.5T160-240v-80q0-17 11.5-28.5T200-360q17 0 28.5 11.5T240-320v80h480v-80q0-17 11.5-28.5T760-360q17 0 28.5 11.5T800-320v80q0 33-23.5 56.5T720-160H240Z"/></svg>
-                                </button>
-                            </div>
-                        </div>
-                        <div style="
-                            display: grid;
-                            grid-template-columns: 1fr max-content;">
-                            <div style="
-                                padding: 1rem;">
-                                <input id="app_inputPerson"
-                                    placeholder="New person">
-                            </div>
-                            <div style="
-                                padding: 1rem;
-                                padding-left: 0rem;">
-                                <button onclick="app_btnAddPerson_click()">
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor"><path d="M720-520h-80q-17 0-28.5-11.5T600-560q0-17 11.5-28.5T640-600h80v-80q0-17 11.5-28.5T760-720q17 0 28.5 11.5T800-680v80h80q17 0 28.5 11.5T920-560q0 17-11.5 28.5T880-520h-80v80q0 17-11.5 28.5T760-400q-17 0-28.5-11.5T720-440v-80Zm-360 40q-66 0-113-47t-47-113q0-66 47-113t113-47q66 0 113 47t47 113q0 66-47 113t-113 47ZM40-240v-32q0-34 17.5-62.5T104-378q62-31 126-46.5T360-440q66 0 130 15.5T616-378q29 15 46.5 43.5T680-272v32q0 33-23.5 56.5T600-160H120q-33 0-56.5-23.5T40-240Z"/></svg>
-                                </button>
-                            </div>
+                            padding: 1rem;">
+                            <select id="app_selectMonth"
+                                onchange="app_selectMonth_change(this)">
+                                <option value="jan">
+                                    January
+                                </option>
+                                <option value="feb">
+                                    February
+                                </option>
+                                <option value="mar">
+                                    March
+                                </option>
+                                <option value="apr">
+                                    April
+                                </option>
+                                <option value="may">
+                                    May
+                                </option>
+                                <option value="jun">
+                                    June
+                                </option>
+                                <option value="jul">
+                                    July
+                                </option>
+                                <option value="aug">
+                                    August
+                                </option>
+                                <option value="sep">
+                                    September
+                                </option>
+                                <option value="oct">
+                                    October
+                                </option>
+                                <option value="nov">
+                                    November
+                                </option>
+                                <option value="dec">
+                                    December
+                                </option>
+                            </select>
                         </div>
                         <div style="
                             padding: 1rem;
-                            overflow: hidden;">
-                            <div style="
-                                height: 100%;
-                                background-color: #111;
-                                border-radius: 1rem;
-                                overflow: auto;"
-                                id="app_panelPeople">
+                            padding-left: 0rem;">
+                            <button onclick="app_btnImport_click()">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor"><path d="M240-160q-33 0-56.5-23.5T160-240v-80q0-17 11.5-28.5T200-360q17 0 28.5 11.5T240-320v80h480v-80q0-17 11.5-28.5T760-360q17 0 28.5 11.5T800-320v80q0 33-23.5 56.5T720-160H240Zm200-486-75 75q-12 12-28.5 11.5T308-572q-11-12-11.5-28t11.5-28l144-144q6-6 13-8.5t15-2.5q8 0 15 2.5t13 8.5l144 144q12 12 11.5 28T652-572q-12 12-28.5 12.5T595-571l-75-75v286q0 17-11.5 28.5T480-320q-17 0-28.5-11.5T440-360v-286Z"/></svg>
+                            </button>
+                        </div>
+                        <div style="
+                            padding: 1rem;
+                            padding-left: 0rem;">
+                            <button onclick="app_btnExport_click()">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor"><path d="M480-337q-8 0-15-2.5t-13-8.5L308-492q-12-12-11.5-28t11.5-28q12-12 28.5-12.5T365-549l75 75v-286q0-17 11.5-28.5T480-800q17 0 28.5 11.5T520-760v286l75-75q12-12 28.5-11.5T652-548q11 12 11.5 28T652-492L508-348q-6 6-13 8.5t-15 2.5ZM240-160q-33 0-56.5-23.5T160-240v-80q0-17 11.5-28.5T200-360q17 0 28.5 11.5T240-320v80h480v-80q0-17 11.5-28.5T760-360q17 0 28.5 11.5T800-320v80q0 33-23.5 56.5T720-160H240Z"/></svg>
+                            </button>
+                        </div>
+                    </div>
+                    <div style="
+                        display: grid;
+                        grid-template-columns: 1fr max-content;">
+                        <div style="
+                            padding: 1rem;">
+                            <input id="app_inputPerson"
+                                placeholder="New person">
+                        </div>
+                        <div style="
+                            padding: 1rem;
+                            padding-left: 0rem;">
+                            <button onclick="app_btnAddPerson_click()">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor"><path d="M720-520h-80q-17 0-28.5-11.5T600-560q0-17 11.5-28.5T640-600h80v-80q0-17 11.5-28.5T760-720q17 0 28.5 11.5T800-680v80h80q17 0 28.5 11.5T920-560q0 17-11.5 28.5T880-520h-80v80q0 17-11.5 28.5T760-400q-17 0-28.5-11.5T720-440v-80Zm-360 40q-66 0-113-47t-47-113q0-66 47-113t113-47q66 0 113 47t47 113q0 66-47 113t-113 47ZM40-240v-32q0-34 17.5-62.5T104-378q62-31 126-46.5T360-440q66 0 130 15.5T616-378q29 15 46.5 43.5T680-272v32q0 33-23.5 56.5T600-160H120q-33 0-56.5-23.5T40-240Z"/></svg>
+                            </button>
+                        </div>
+                    </div>
+                    <div style="
+                        padding: 1rem;
+                        overflow: hidden;">
+                        <div style="
+                            height: 100%;
+                            background-color: #111;
+                            border-radius: 1rem;
+                            overflow: auto;"
+                            id="app_panelPeople">
 
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -233,6 +238,26 @@
                 return `${date.getFullYear()}-${month}-${day} ${hour}-${minute}-${second}`;
             }
 
+            function distributePayment(bills, payment) {
+                for (let bill of bills) {
+                    bill.amount = Number(bill.amount);
+                    bill.paid = Number(bill.paid);
+                    let needed = bill.amount - bill.paid;
+
+                    if (payment <= 0) break;
+
+                    if (needed > 0) {
+                        let payAmount = Math.min(payment, needed);
+                        bill.paid += payAmount;
+                        payment -= payAmount;
+                    }
+                }
+
+                if (payment > 0 && bills.length > 0) {
+                    bills[bills.length - 1].paid += payment;
+                }
+            }
+
             function openPage(page) {
                 pageApp.style.display = "none";
 
@@ -283,6 +308,31 @@
                                     </div>
                                     <div class="bills">
                                     
+                                    </div>
+                                    <div style="
+                                        display: grid;
+                                        grid-template-columns: 1fr max-content;">
+                                        <div style="
+                                            padding: 1rem;
+                                            padding-right: 0rem">
+                                            <input style="
+                                                padding: 0rem;
+                                                text-align: center;
+                                                background-color: transparent;
+                                                color: #fff;
+                                                border-radius: 0rem;
+                                                border-bottom: 1px solid #fff;"
+                                                type="number"
+                                                class="paymentAmount"
+                                                placeholder="Payment amount"
+                                                data-person="${escapeHtml(person.name)}">
+                                        </div>
+                                        <div style="
+                                            padding: 1rem;"
+                                            onclick="app_btnAddAmount_click(this)"
+                                            data-person="${escapeHtml(person.name)}">
+                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor"><path d="M440-440H240q-17 0-28.5-11.5T200-480q0-17 11.5-28.5T240-520h200v-200q0-17 11.5-28.5T480-760q17 0 28.5 11.5T520-720v200h200q17 0 28.5 11.5T760-480q0 17-11.5 28.5T720-440H520v200q0 17-11.5 28.5T480-200q-17 0-28.5-11.5T440-240v-200Z"/></svg>
+                                        </div>
                                     </div>
                                     <div style="
                                         display: grid;
@@ -435,6 +485,15 @@
                 openPage("app");
             }
 
+            function app_btnAddAmount_click(element) {
+                let amount = element.parentElement.querySelector(".paymentAmount").value;
+                amount = Number(amount) || 0;
+                let bills = data.months[data.selectedMonth].find(person => person.name == element.dataset.person).bills;
+                distributePayment(bills, amount);
+                localStorage.setItem("20250812_data", JSON.stringify(data));
+                openPage("app");
+            }
+
             function app_btnAddBill_click(element) {
                 let person = data.months[data.selectedMonth].find(person => person.name == element.dataset.person);
                 let name = element.parentElement.parentElement.querySelector(".paymentType").value;
@@ -452,7 +511,7 @@
             function app_inputBillPaid_change(element) {
                 let person = data.months[data.selectedMonth].find(person => person.name == element.dataset.person);
                 let bill = person.bills.find(bill => bill.name == element.dataset.bill);
-                bill.paid = element.value;
+                bill.paid = Number(element.value);
                 localStorage.setItem("20250812_data", JSON.stringify(data));
                 openPage("app");
             }
@@ -460,7 +519,7 @@
             function app_inputBillAmount_change(element) {
                 let person = data.months[data.selectedMonth].find(person => person.name == element.dataset.person);
                 let bill = person.bills.find(bill => bill.name == element.dataset.bill);
-                bill.amount = element.value;
+                bill.amount = Number(element.value);
                 localStorage.setItem("20250812_data", JSON.stringify(data));
                 openPage("app");
             }
